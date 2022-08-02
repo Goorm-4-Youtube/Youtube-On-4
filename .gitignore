@@ -40,3 +40,4 @@ frontend/youtube-clone-ui/dist
 
 *.log
 /frontend/youtube-clone-ui/.angular/
+/frontend/node_modules/
