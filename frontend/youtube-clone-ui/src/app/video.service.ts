@@ -57,4 +57,8 @@ export class VideoService {
     return this.httpClient.post<VideoDto>("http://localhost:8080/api/videos/"+ videoId + "/disLike",null);
 
   }
+
+  deleteVideo(videoId: string): Observable<VideoDto> {
+    return this.httpClient.post<VideoDto>("http://localhost:8080/api/videos/"+ videoId+ "/delete",null);
+  }
 }

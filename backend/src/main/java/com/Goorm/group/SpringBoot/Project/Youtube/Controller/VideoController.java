@@ -31,6 +31,14 @@ public class VideoController {
         return videoService.uploadThumbnail(file, videoId);
     }
 
+
+    @PostMapping("/{videoId}/delete")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable String videoId)
+    {
+        videoService.deleteVideo(videoId);
+    }
+
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
     public VideoDto editVideoMetadata(@RequestBody VideoDto videoDto) {
