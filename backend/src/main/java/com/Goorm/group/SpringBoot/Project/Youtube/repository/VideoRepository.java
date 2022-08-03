@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface VideoRepository extends MongoRepository<Video,String> {
     List<Video> findById_(String id);
+
+    List<Video> findByUserId(String userId);
 }

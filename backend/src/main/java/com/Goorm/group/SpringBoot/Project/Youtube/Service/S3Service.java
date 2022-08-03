@@ -51,7 +51,11 @@ public class S3Service implements FileService{
         {
             return;
         }
+        System.out.println(url);
         AmazonS3URI as3uri = new AmazonS3URI(url);
+        System.out.println(as3uri);
+        System.out.println(as3uri.getBucket());
+        System.out.println(as3uri.getKey());
         awsS3Client.deleteObject(as3uri.getBucket(), as3uri.getKey());
     }
 }
