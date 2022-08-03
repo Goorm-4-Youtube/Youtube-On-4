@@ -58,11 +58,6 @@ export class VideoDetailComponent implements OnInit {
     })
   }
 
-  deleteVideo() {
-    this.videoService.deleteVideo(this.videoId).subscribe(data => {
-      this.router.navigateByUrl("/");
-    })
-  }
 
   subscribeToUser() {
     let userId = this.userService.getUserId();
