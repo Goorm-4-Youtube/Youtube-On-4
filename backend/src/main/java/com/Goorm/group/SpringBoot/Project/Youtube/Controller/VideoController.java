@@ -79,5 +79,11 @@ public class VideoController {
         return videoService.getAllVideos();
     }
 
+    @PostMapping("/delete/{videoId}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable String videoId)
+    {
+        videoService.deleteVideo(videoId);
+    }
 
 }

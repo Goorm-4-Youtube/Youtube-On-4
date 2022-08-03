@@ -31,14 +31,14 @@ public class VideoService {
 
     }
     public VideoDto editVideo(VideoDto videoDto) {
-    var savedVideo = getVideoById((videoDto.getId()));
-    savedVideo.setTitle(videoDto.getTitle());
-    savedVideo.setDescription(videoDto.getDescription());
-    savedVideo.setTags(videoDto.getTags());
-    savedVideo.setVideoStatus(videoDto.getVideoStatus());
+        var savedVideo = getVideoById((videoDto.getId()));
+        savedVideo.setTitle(videoDto.getTitle());
+        savedVideo.setDescription(videoDto.getDescription());
+        savedVideo.setTags(videoDto.getTags());
+        savedVideo.setVideoStatus(videoDto.getVideoStatus());
 
-    videoRepository.save(savedVideo);
-    return videoDto;
+        videoRepository.save(savedVideo);
+        return videoDto;
 
     }
 
@@ -171,5 +171,16 @@ public class VideoService {
         return videoRepository.findAll().stream().map(this::mapToVideoDto).collect(Collectors.toList());
     }
 
+    public void deleteVideo(String id) {
+        System.out.println(("delete"));
+        var temp=videoRepository.findById_(id);
+        var v=temp.get(0);
+        String videoUrl=v.getVideoUrl();
+        String thumbnailUrl=v.getThumbnailUrl();
+        s3service.deleteFile(thumbnailUrl); //S3 thumbnail 삭제
+        s3service.deleteFile(videoUrl); //S3 video 삭제
+        videoRepository.deleteById(id); //몽고DB 삭제
+
+    }
 
 }
