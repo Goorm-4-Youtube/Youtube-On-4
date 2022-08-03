@@ -20,6 +20,12 @@ export class MyVideoCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  deleteConfirm() {
+    if(confirm("Are you sure to delete video")) {
+      this.deleteVideo();
+    }
+  }
+
   deleteVideo() {
     console.log("DeleteVideo!")
 
