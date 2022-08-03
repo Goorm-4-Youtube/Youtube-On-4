@@ -15,7 +15,7 @@ export class LikedVideosComponent implements OnInit {
   constructor(private videoService: VideoService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getHistory().subscribe(response => {
+    this.userService.getLikedVideo().subscribe(response => {
       this.likedVideos = response;
     })
   }
