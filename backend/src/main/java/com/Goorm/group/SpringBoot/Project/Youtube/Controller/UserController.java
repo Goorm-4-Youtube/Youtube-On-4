@@ -43,13 +43,13 @@ public class UserController {
         return true;
     }
 
-    @GetMapping("/{userId}/history")
+    @GetMapping("/history")
     @ResponseStatus(HttpStatus.OK)
     public List<VideoDto> getHistory() {
         return videoService.getVideoList(userService.getHistory());
     }
 
-    @GetMapping("/{userId}/likedVideo")
+    @GetMapping("/likedVideo")
     @ResponseStatus(HttpStatus.OK)
     public List<VideoDto> getLikedVideo(){
         return videoService.getVideoList(userService.getLikedVideo());
