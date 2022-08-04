@@ -41,7 +41,14 @@ export class SaveVideoDetailsComponent {
     this.videoService.getVideo(this.videoId).subscribe(data => {
       this.videoUrl = data.videoUrl;
       this.thumbnailUrl = data.thumbnailUrl;
-      console.log(data.thumbnailUrl)
+      this.title.setValue(data.title);
+      this.description.setValue(data.description);
+      this.videoStatus.setValue(data.videoStatus);
+      for(var i in data.tags)
+      {
+        this.tags.push(data.tags[i]);
+      }
+
     })
     this.saveVideoDetailsForm = new FormGroup({
       title: this.title,
@@ -52,7 +59,6 @@ export class SaveVideoDetailsComponent {
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
-
     // Add our fruit
     if (value) {
       this.tags.push(value);

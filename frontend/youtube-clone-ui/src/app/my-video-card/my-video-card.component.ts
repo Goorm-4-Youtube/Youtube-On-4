@@ -37,6 +37,12 @@ export class MyVideoCardComponent implements OnInit {
         });
     })
   }
+
+  setting()
+  {
+    this.router.navigateByUrl("/save-video-details/"+this.video.id);
+  }
+
   route() {
     this.router.navigateByUrl("/")
       .then(()=> {
