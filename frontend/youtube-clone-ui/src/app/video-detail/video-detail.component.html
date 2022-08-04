@@ -11,6 +11,10 @@
         </div>
         <div fxFlex="50%" fxLayoutAlign="end">
           <span class="like-dislike-section">
+
+                     <button mat-icon-button class="delete" (click)="deleteVideo()">
+                <mat-icon>delete</mat-icon>
+              </button>
               <button mat-icon-button class="thumbs-up" (click)="likeVideo()">
                 <mat-icon>thumb_up_off_alt</mat-icon>
                 {{likeCount}}
@@ -42,7 +46,7 @@
         <mat-chip>Angular</mat-chip>
       </mat-chip-list>
       <mat-divider></mat-divider>
-      <app-comments [videoId] = "videoId" *ngIf="videoAvailable"></app-comments>
+      <app-comments [videoId]="videoId" *ngIf="videoAvailable"></app-comments>
     </div>
   </div>
   <div fxFlex="5%"></div>
