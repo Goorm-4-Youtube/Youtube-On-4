@@ -88,4 +88,11 @@ public class VideoController {
     }
 
 
+    @PostMapping("/{videoId}/delete")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable String videoId)
+    {
+        videoService.deleteVideo(videoId);
+    }
+
 }
