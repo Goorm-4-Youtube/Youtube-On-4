@@ -2,7 +2,6 @@ package com.Goorm.group.SpringBoot.Project.Youtube.Service;
 
 
 import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.AmazonS3URI;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +18,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class S3Service implements FileService{
 
-    public static final String BUCKET_NAME = "goorm4-video";
+    public static final String BUCKET_NAME = "springstudy";
     private final AmazonS3Client awsS3Client;
 
     @Override
@@ -44,14 +43,5 @@ public class S3Service implements FileService{
         }
         awsS3Client.setObjectAcl(BUCKET_NAME,key, CannedAccessControlList.PublicRead);
         return awsS3Client.getResourceUrl(BUCKET_NAME,key);
-    }
-
-    public void deleteFile(String url) {
-        if (url==null)
-        {
-            return;
-        }
-        AmazonS3URI as3uri = new AmazonS3URI(url);
-        awsS3Client.deleteObject(as3uri.getBucket(), as3uri.getKey());
     }
 }
