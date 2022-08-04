@@ -13,7 +13,7 @@
           <span class="like-dislike-section">
 
 
-  
+
             <button mat-icon-button class="delete" (click)="deleteVideo()">
                 <mat-icon>delete</mat-icon>
               </button>
@@ -31,7 +31,7 @@
       </div>
       <mat-divider></mat-divider>
       <mat-card-header>
-        <mat-card-title>Programming Techie</mat-card-title>
+        <mat-card-title></mat-card-title>
         <mat-card-subtitle class="subtitles">4.2K Subscribers</mat-card-subtitle>
         <button *ngIf="showSubscribeButton" class="subscribe-button" mat-raised-button color="warn"
                 (click)="subscribeToUser()">SUBSCRIBE
@@ -45,8 +45,7 @@
       <div>{{videoDescription}}</div>
       <mat-divider></mat-divider>
       <mat-chip-list>
-        <mat-chip>Spring Boot</mat-chip>
-        <mat-chip>Angular</mat-chip>
+        <mat-chip>{{tags}}</mat-chip>
       </mat-chip-list>
       <mat-divider></mat-divider>
       <app-comments [videoId]="videoId" *ngIf="videoAvailable"></app-comments>

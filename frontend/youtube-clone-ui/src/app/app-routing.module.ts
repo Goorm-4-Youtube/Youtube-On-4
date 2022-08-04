@@ -35,6 +35,10 @@ const routes: Routes = [
       {
         path: 'disliked-videos', component: DisLikeVideoComponent,
       },
+      {
+        path: 'callback', component:CallbackComponent,
+
+      }
 
     ]
   },
