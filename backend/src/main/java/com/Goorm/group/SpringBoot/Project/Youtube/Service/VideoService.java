@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,14 +32,14 @@ public class VideoService {
 
     }
     public VideoDto editVideo(VideoDto videoDto) {
-        var savedVideo = getVideoById((videoDto.getId()));
-        savedVideo.setTitle(videoDto.getTitle());
-        savedVideo.setDescription(videoDto.getDescription());
-        savedVideo.setTags(videoDto.getTags());
-        savedVideo.setVideoStatus(videoDto.getVideoStatus());
+    var savedVideo = getVideoById((videoDto.getId()));
+    savedVideo.setTitle(videoDto.getTitle());
+    savedVideo.setDescription(videoDto.getDescription());
+    savedVideo.setTags(videoDto.getTags());
+    savedVideo.setVideoStatus(videoDto.getVideoStatus());
 
-        videoRepository.save(savedVideo);
-        return videoDto;
+    videoRepository.save(savedVideo);
+    return videoDto;
 
     }
 
@@ -171,6 +172,16 @@ public class VideoService {
         return videoRepository.findAll().stream().map(this::mapToVideoDto).collect(Collectors.toList());
     }
 
+
+    public List<VideoDto> getVideoList(Set<String> videoList){
+        return videoRepository.findByIdIn(videoList).stream().map(this::mapToVideoDto).collect(Collectors.toList());
+    }
+
+    public List<VideoDto> getdisLikeVideoList(Set<String> videoList){
+        return videoRepository.findByIdIn(videoList).stream().map(this::mapToVideoDto).collect(Collectors.toList());
+    }
+
+
     public void deleteVideo(String id) {
         System.out.println(("delete"));
         var temp=videoRepository.findById_(id);
@@ -182,5 +193,4 @@ public class VideoService {
         videoRepository.deleteById(id); //몽고DB 삭제
 
     }
-
 }
