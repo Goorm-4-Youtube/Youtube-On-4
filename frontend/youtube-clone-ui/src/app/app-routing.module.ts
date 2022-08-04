@@ -10,6 +10,8 @@ import {HistoryComponent} from "./history/history.component";
 import {FeaturedComponent} from "./featured/featured.component";
 import {CallbackComponent} from "./callback/callback.component";
 import {MyVideosComponent} from "./my-videos/my-videos.component";
+import {DisLikeVideoComponent} from "./dis-like-video/dis-like-video.component";
+
 
 const routes: Routes = [
 
@@ -35,6 +37,14 @@ const routes: Routes = [
       {
         path: 'my-videos', component: MyVideosComponent,
       },
+
+        path: 'disliked-videos', component: DisLikeVideoComponent,
+      },
+      {
+        path: 'callback', component:CallbackComponent,
+
+      }
+
 
     ]
   },

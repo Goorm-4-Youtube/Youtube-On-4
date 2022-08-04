@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -190,6 +191,14 @@ public class VideoService {
 
     public List<VideoDto> getMyVideos(String userId) {
         return videoRepository.findByUserId(userId).stream().map(this::mapToVideoDto).collect(Collectors.toList());
+    }
+
+    public List<VideoDto> getVideoList(Set<String> videoList){
+        return videoRepository.findByIdIn(videoList).stream().map(this::mapToVideoDto).collect(Collectors.toList());
+    }
+
+    public List<VideoDto> getdisLikeVideoList(Set<String> videoList){
+        return videoRepository.findByIdIn(videoList).stream().map(this::mapToVideoDto).collect(Collectors.toList());
     }
 
 }

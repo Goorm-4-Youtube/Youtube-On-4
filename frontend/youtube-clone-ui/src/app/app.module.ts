@@ -42,7 +42,8 @@ import { CallbackComponent } from './callback/callback.component';
 import { CommentsComponent } from './comments/comments.component';
 import {MatMenuModule} from "@angular/material/menu";
 import { MyVideosComponent } from './my-videos/my-videos.component';
-import { MyVideoCardComponent } from './my-video-card/my-video-card.component';
+import { DisLikeVideoComponent } from './dis-like-video/dis-like-video.component';
+
 
 @NgModule({
   declarations: [
@@ -63,6 +64,8 @@ import { MyVideoCardComponent } from './my-video-card/my-video-card.component';
     CommentsComponent,
     MyVideosComponent,
     MyVideoCardComponent
+    DisLikeVideoComponent
+
   ],
     imports: [
         BrowserModule,

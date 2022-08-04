@@ -88,6 +88,7 @@ public class VideoController {
     }
 
 
+
     @GetMapping("/public")
     @ResponseStatus(HttpStatus.OK)
     public List<VideoDto> getPublicVideos(){return videoService.getPublicVideos();}
@@ -99,4 +100,5 @@ public class VideoController {
     public List<VideoDto> getMyVideos(@PathVariable String userId) {
         return videoService.getMyVideos(userId);
     }
+
 }

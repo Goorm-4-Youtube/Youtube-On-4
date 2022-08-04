@@ -2,12 +2,15 @@ package com.Goorm.group.SpringBoot.Project.Youtube.Controller;
 
 import com.Goorm.group.SpringBoot.Project.Youtube.Service.UserRegistrationService;
 import com.Goorm.group.SpringBoot.Project.Youtube.Service.UserService;
+import com.Goorm.group.SpringBoot.Project.Youtube.Service.VideoService;
+import com.Goorm.group.SpringBoot.Project.Youtube.dto.VideoDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -17,6 +20,7 @@ public class UserController {
 
 
     private final UserService userService;
+    private final VideoService videoService;
     private final UserRegistrationService userRegistrationService;
 
     @GetMapping("/register")
@@ -39,10 +43,23 @@ public class UserController {
         return true;
     }
 
-    @GetMapping("/{userId}/history")
+    @GetMapping("/history")
     @ResponseStatus(HttpStatus.OK)
-    public Set<String> userHistory(@PathVariable String userId) {
-        return userService.userHistory(userId);
+    public List<VideoDto> getHistory() {
+        return videoService.getVideoList(userService.getHistory());
+    }
+
+    @GetMapping("/likedVideo")
+    @ResponseStatus(HttpStatus.OK)
+    public List<VideoDto> getLikedVideo(){
+        return videoService.getVideoList(userService.getLikedVideo());
+
+    }
+
+    @GetMapping("/dislikedVideo")
+    @ResponseStatus(HttpStatus.OK)
+    public List<VideoDto> getDisLikedVideo(){
+        return videoService.getdisLikeVideoList(userService.getdisLikedVideo());
     }
 
 }
