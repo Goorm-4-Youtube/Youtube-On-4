@@ -21,7 +21,7 @@
       <div>
         <mat-form-field appearance="fill">
           <mat-label>Video Status</mat-label>
-          <mat-select [formControl]="videoStatus">
+          <mat-select [formControl]="videoStatus" required>
             <mat-option value="PUBLIC">PUBLIC</mat-option>
             <mat-option value="PRIVATE">PRIVATE</mat-option>
           </mat-select>

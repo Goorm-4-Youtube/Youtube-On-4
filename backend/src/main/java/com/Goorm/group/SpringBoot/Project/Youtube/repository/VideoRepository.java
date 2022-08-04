@@ -9,4 +9,6 @@ public interface VideoRepository extends MongoRepository<Video,String> {
     List<Video> findById_(String id);
 
     List<Video> findByUserId(String userId);
+
+    List<Video> findByVideoStatus(String status);
 }

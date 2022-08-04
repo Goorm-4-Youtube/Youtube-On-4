@@ -17,7 +17,7 @@ export class FeaturedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.videoService.getAllVideos().subscribe(response => {
+    this.videoService.getPublicVideos().subscribe(response => {
       this.featuredVideos = response;
     });
   }

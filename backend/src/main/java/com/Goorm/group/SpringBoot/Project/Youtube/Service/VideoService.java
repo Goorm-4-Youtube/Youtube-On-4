@@ -184,6 +184,10 @@ public class VideoService {
         return videoRepository.findAll().stream().map(this::mapToVideoDto).collect(Collectors.toList());
     }
 
+    public List<VideoDto> getPublicVideos() {
+        return videoRepository.findByVideoStatus("PUBLIC").stream().map(this::mapToVideoDto).collect(Collectors.toList());
+    }
+
     public List<VideoDto> getMyVideos(String userId) {
         return videoRepository.findByUserId(userId).stream().map(this::mapToVideoDto).collect(Collectors.toList());
     }
