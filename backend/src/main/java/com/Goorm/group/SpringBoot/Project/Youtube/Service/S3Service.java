@@ -19,7 +19,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class S3Service implements FileService{
 
-    public static final String BUCKET_NAME = "goormtestbucket";
+
+    public static final String BUCKET_NAME = "goorm4-video";
+
     private final AmazonS3Client awsS3Client;
 
     @Override

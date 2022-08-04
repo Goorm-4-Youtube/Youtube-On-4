@@ -43,6 +43,18 @@ public class VideoService {
 
     }
 
+    public void deleteVideo(String id) {
+        System.out.println(("delete"));
+        var temp=videoRepository.findById_(id);
+        var v=temp.get(0);
+        String videoUrl=v.getVideoUrl();
+        String thumbnailUrl=v.getThumbnailUrl();
+        s3service.deleteFile(thumbnailUrl); //S3 thumbnail 삭제
+        s3service.deleteFile(videoUrl); //S3 video 삭제
+        videoRepository.deleteById(id); //몽고DB 삭제
+
+    }
+
     public String uploadThumbnail(MultipartFile file, String videoId) {
         var savedVideo = getVideoById(videoId);
 
