@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {VideoService} from "../video.service";
 import {UserService} from "../user.service";
 
@@ -25,7 +25,7 @@ export class VideoDetailComponent implements OnInit {
 
 
   constructor(private activatedRoute : ActivatedRoute, private userService: UserService,
-              private videoService: VideoService,private router: Router) {
+              private videoService: VideoService) {
     this.videoId = this.activatedRoute.snapshot.params['videoId'];
     this.videoService.getVideo(this.videoId).subscribe(data => {
       this.videoUrl = data.videoUrl;
@@ -41,12 +41,6 @@ export class VideoDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-  deleteVideo() {
-    this.videoService.deleteVideo(this.videoId).subscribe(data => {
-      this.router.navigateByUrl("/");
-    })
   }
 
   likeVideo() {
@@ -66,8 +60,8 @@ export class VideoDetailComponent implements OnInit {
   subscribeToUser() {
     let userId = this.userService.getUserId();
     this.userService.subscribeToUser(userId).subscribe(data =>{
-      this.showUnSubscribeButton = true;
-      this.showSubscribeButton =false;
+        this.showUnSubscribeButton = true;
+        this.showSubscribeButton =false;
     });
   }
 
