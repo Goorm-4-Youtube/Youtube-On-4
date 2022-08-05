@@ -93,6 +93,13 @@ public class VideoController {
     public List<VideoDto> getPublicVideos(){return videoService.getPublicVideos();}
 
 
+    @GetMapping("/{query}/search")
+    @ResponseStatus(HttpStatus.OK)
+    public List<VideoDto> searchVideo(@PathVariable String query) {
+
+        System.out.println(query);
+        return videoService.searchVideoList(query);
+    }
 
     @GetMapping("/{userId}/videos")
     @ResponseStatus(HttpStatus.OK)

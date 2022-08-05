@@ -44,6 +44,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import { MyVideosComponent } from './my-videos/my-videos.component';
 import { MyVideoCardComponent } from './my-video-card/my-video-card.component';
 import { DislikedVideosComponent } from './disliked-videos/disliked-videos.component';
+import { SearchVideoComponent } from './search-video/search-video.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { DislikedVideosComponent } from './disliked-videos/disliked-videos.compo
     CommentsComponent,
     MyVideosComponent,
     MyVideoCardComponent,
-    DislikedVideosComponent
+    DislikedVideosComponent,
+    SearchVideoComponent
   ],
     imports: [
         BrowserModule,
