@@ -91,4 +91,19 @@ public class UserService {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("Cannot find user with userId " + userId));
     }
+
+    public Set<String> getHistory() {
+        User currentUser = getCurrentUser();
+        return currentUser.getVideoHistory();
+    }
+
+    public Set<String> getLikedVideo() {
+        User currentUser = getCurrentUser();
+        return currentUser.getLikedVideos();
+    }
+
+    public Set<String> getdisLikedVideo() {
+        User currentUser = getCurrentUser();
+        return currentUser.getDisLikedVideos();
+    }
 }

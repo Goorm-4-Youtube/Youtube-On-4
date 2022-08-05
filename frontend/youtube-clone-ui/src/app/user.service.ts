@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {VideoDto} from "./video-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,18 @@ export class UserService {
 
   getUserId(): string {
     return this.userId;
+  }
+
+  getHistory(): Observable<Array<VideoDto>> {
+    return this.httpClient.get<Array<VideoDto>>("http://localhost:8080/api/user/history")
+  }
+
+  getLikedVideo(): Observable<Array<VideoDto>> {
+    return this.httpClient.get<Array<VideoDto>>("http://localhost:8080/api/user/likedVideo")
+  }
+
+  getDisLikedVideo(): Observable<Array<VideoDto>>{
+    return this.httpClient.get<Array<VideoDto>>("http://localhost:8080/api/user/dislikedVideo")
   }
 
 }

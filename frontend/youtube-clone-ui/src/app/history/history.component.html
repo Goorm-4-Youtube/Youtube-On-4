@@ -1,13 +1,15 @@
 <div fxLayout="row wrap">
-  <h3>Watch History</h3>
+  <h3>history</h3>
 </div>
 <div fxLayout="row wrap" fxLayoutGap="12px grid">
-  <div fxFlext="30%" *ngFor="let num of [1,2,3,4,5,6,7,8]">
+  <div fxFlex="30%" *ngFor="let viwedVideo of viewedVideos">
 
-    <app-video-card></app-video-card>
+    <app-video-card [video]="viwedVideo"></app-video-card>
 
   </div>
 </div>
+
+
 
 
 

@@ -1,9 +1,8 @@
-.example-card{
-  max-width: 400px;
-  width: 300px;
+.sidenav-content{
+  margin-left: 12rem;
 }
 
-.example-header-image{
-  background-image: url("https://material.angular.io/assets/img/examples/shiba2.jpg");
-  background-size: cover;
+.sidenav-container{
+
+  height:100%;
 }
