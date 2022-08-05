@@ -49,6 +49,10 @@ export class VideoService {
     return this.httpClient.get<Array<VideoDto>>("http://localhost:8080/api/videos");
   }
 
+  searchVideos(query: string): Observable<Array<VideoDto>> {
+    return this.httpClient.get<Array<VideoDto>>("http://localhost:8080/api/videos/"+query+"/search");
+  }
+
   getPublicVideos(): Observable<Array<VideoDto>> {
     return this.httpClient.get<Array<VideoDto>>("http://localhost:8080/api/videos/public");
   }

@@ -201,4 +201,8 @@ public class VideoService {
         return videoRepository.findByIdIn(videoList).stream().map(this::mapToVideoDto).collect(Collectors.toList());
     }
 
+    public List<VideoDto> searchVideoList(String query){
+        return videoRepository.findByTitleContainingIgnoreCase(query).stream().map(this::mapToVideoDto).collect(Collectors.toList());
+    }
+
 }

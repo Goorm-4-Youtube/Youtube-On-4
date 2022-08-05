@@ -1,6 +1,15 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span routerLink="callback">Youtube Clone</span>
+
+
+
+    <span class="example-spacer"></span>
+
+    <mat-form-field class="search_bar" >
+      <input type="text" matInput placeholder="Search" name= "search" [(ngModel)]= "search">
+      <button matSuffix mat-button (click)="query()"><mat-icon >search</mat-icon></button>
+    </mat-form-field>
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon favorite-icon" routerLink="/upload-video" aria-label="Example icon-button with heart icon">
       <mat-icon>video_call</mat-icon>
@@ -8,7 +17,6 @@
     <button *ngIf="isAuthenticated; else noAuth" [matMenuTriggerFor]="menu" mat-icon-button class="example-icon"
             aria-label="Example icon-button with share icon">
       <mat-icon>account_circle</mat-icon>
-
     </button>
 
     <mat-menu #menu="matMenu">

@@ -11,6 +11,7 @@ import {FeaturedComponent} from "./featured/featured.component";
 import {CallbackComponent} from "./callback/callback.component";
 import {MyVideosComponent} from "./my-videos/my-videos.component";
 import {DislikedVideosComponent} from "./disliked-videos/disliked-videos.component";
+import {SearchVideoComponent} from "./search-video/search-video.component";
 
 const routes: Routes = [
 
@@ -38,6 +39,9 @@ const routes: Routes = [
       {
         path: 'history', component: HistoryComponent,
       },
+      {
+        path: 'search-video/:query', component:SearchVideoComponent,
+      },
 
       {
         path: 'liked-videos', component: LikedVideosComponent,
@@ -61,6 +65,7 @@ const routes: Routes = [
     path: 'save-video-details/:videoId', component:SaveVideoDetailsComponent,
 
   },
+
 
   {
     path: 'video-details/:videoId', component:VideoDetailComponent,
