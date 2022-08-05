@@ -1,0 +1,19 @@
+<div fxLayout="row wrap">
+  <h3>dislikedVideo</h3>
+</div>
+<div fxLayout="row wrap" fxLayoutGap="12px grid">
+  <div fxFlex="30%" *ngFor="let dislikedVideo of dislikedVideos">
+
+    <app-video-card [video]="dislikedVideo"></app-video-card>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+

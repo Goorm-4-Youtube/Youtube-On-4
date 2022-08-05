@@ -9,13 +9,24 @@ import {LikedVideosComponent} from "./liked-videos/liked-videos.component";
 import {HistoryComponent} from "./history/history.component";
 import {FeaturedComponent} from "./featured/featured.component";
 import {CallbackComponent} from "./callback/callback.component";
-import {DisLikeVideoComponent} from "./dis-like-video/dis-like-video.component";
+import {MyVideosComponent} from "./my-videos/my-videos.component";
+import {DislikedVideosComponent} from "./disliked-videos/disliked-videos.component";
 
 const routes: Routes = [
 
   {
     path: '', component: HomeComponent,
     children: [
+      {
+        path: 'callback', component: CallbackComponent,
+      },
+
+      {
+        path: 'disliked-videos', component: DislikedVideosComponent,
+      },
+
+
+
       {
         path: 'featured', component: FeaturedComponent,
       },
@@ -33,12 +44,8 @@ const routes: Routes = [
       },
 
       {
-        path: 'disliked-videos', component: DisLikeVideoComponent,
+        path: 'my-videos', component: MyVideosComponent,
       },
-      {
-        path: 'callback', component:CallbackComponent,
-
-      }
 
     ]
   },

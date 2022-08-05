@@ -82,6 +82,11 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public Set<String> userHistory(String userId) {
+        User user = getUserById(userId);
+        return user.getVideoHistory();
+    }
+
     private User getUserById(String userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("Cannot find user with userId " + userId));

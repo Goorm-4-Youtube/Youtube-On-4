@@ -37,6 +37,7 @@ public class VideoService {
     savedVideo.setDescription(videoDto.getDescription());
     savedVideo.setTags(videoDto.getTags());
     savedVideo.setVideoStatus(videoDto.getVideoStatus());
+    savedVideo.setUserId(videoDto.getUserId());
 
     videoRepository.save(savedVideo);
     return videoDto;
@@ -184,6 +185,13 @@ public class VideoService {
         return videoRepository.findAll().stream().map(this::mapToVideoDto).collect(Collectors.toList());
     }
 
+    public List<VideoDto> getPublicVideos() {
+        return videoRepository.findByVideoStatus("PUBLIC").stream().map(this::mapToVideoDto).collect(Collectors.toList());
+    }
+
+    public List<VideoDto> getMyVideos(String userId) {
+        return videoRepository.findByUserId(userId).stream().map(this::mapToVideoDto).collect(Collectors.toList());
+    }
 
     public List<VideoDto> getVideoList(Set<String> videoList){
         return videoRepository.findByIdIn(videoList).stream().map(this::mapToVideoDto).collect(Collectors.toList());

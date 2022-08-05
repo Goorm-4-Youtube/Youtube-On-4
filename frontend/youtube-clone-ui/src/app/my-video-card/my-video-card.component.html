@@ -1,0 +1,19 @@
+<mat-card class="example-card" >
+  <img mat-card-image [src]="video.thumbnailUrl" alt="Thumbnail" routerLink="/video-details/{{video.id}}">
+  <mat-card-header routerLink="/video-details/{{video.id}}">
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{video.title}}</mat-card-title>
+    <mat-card-subtitle>{{video.description}}</mat-card-subtitle>
+    <mat-card-subtitle>{{video.userId}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-icon-button class="delete" (click)="deleteConfirm()" >
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-icon-button class="delete" (click)="setting()" >
+      <mat-icon>settings</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

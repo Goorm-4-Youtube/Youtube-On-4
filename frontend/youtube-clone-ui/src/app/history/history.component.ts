@@ -18,6 +18,7 @@ export class HistoryComponent implements OnInit {
     this.userService.getHistory().subscribe(response => {
       this.viewedVideos = response;
     })
+
   }
 
 }

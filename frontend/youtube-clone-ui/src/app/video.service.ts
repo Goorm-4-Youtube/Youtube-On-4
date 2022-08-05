@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {UploadVideoComponent} from "./upload-video/upload-video.component";
 import {UploadVideoResponse} from "./upload-video/UploadVideoResponse";
 import {VideoDto} from "./video-dto";
+import {UserService} from "./user.service";
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,14 @@ export class VideoService {
     return this.httpClient.get<Array<VideoDto>>("http://localhost:8080/api/videos");
   }
 
+  getPublicVideos(): Observable<Array<VideoDto>> {
+    return this.httpClient.get<Array<VideoDto>>("http://localhost:8080/api/videos/public");
+  }
+
+  getMyVideos(userId: string): Observable<Array<VideoDto>> {
+    return this.httpClient.get<Array<VideoDto>>("http://localhost:8080/api/videos/"+userId+"/videos");
+  }
+
   likeVideo(videoId: string): Observable<VideoDto> {
     return this.httpClient.post<VideoDto>("http://localhost:8080/api/videos/"+ videoId + "/like",null);
 
@@ -61,4 +70,6 @@ export class VideoService {
   deleteVideo(videoId: string): Observable<VideoDto> {
     return this.httpClient.post<VideoDto>("http://localhost:8080/api/videos/"+ videoId+ "/delete",null);
   }
+
+
 }

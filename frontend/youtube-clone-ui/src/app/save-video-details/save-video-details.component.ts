@@ -7,6 +7,7 @@ import {VideoService} from "../video.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {BehaviorSubject, Subscription} from "rxjs";
 import {VideoDto} from "../video-dto";
+import {UserService} from "../user.service";
 
 @Component({
   selector: 'app-save-video-details',
@@ -35,12 +36,19 @@ export class SaveVideoDetailsComponent {
   thumbnailUploaded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService,
-              private matSnackBar: MatSnackBar) {
+              private matSnackBar: MatSnackBar, private userService : UserService) {
     this.videoId = this.activatedRoute.snapshot.params['videoId'];
     this.videoService.getVideo(this.videoId).subscribe(data => {
       this.videoUrl = data.videoUrl;
       this.thumbnailUrl = data.thumbnailUrl;
-      console.log(data.thumbnailUrl)
+      this.title.setValue(data.title);
+      this.description.setValue(data.description);
+      this.videoStatus.setValue(data.videoStatus);
+      for(var i in data.tags)
+      {
+        this.tags.push(data.tags[i]);
+      }
+
     })
     this.saveVideoDetailsForm = new FormGroup({
       title: this.title,
@@ -51,7 +59,6 @@ export class SaveVideoDetailsComponent {
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
-
     // Add our fruit
     if (value) {
       this.tags.push(value);
@@ -91,6 +98,7 @@ export class SaveVideoDetailsComponent {
     const videoMetaData: VideoDto = {
       "id": this.videoId,
       "title": this.saveVideoDetailsForm.get('title')?.value,
+      "userId": this.userService.getUserId(),
       "description": this.saveVideoDetailsForm.get('description')?.value,
       "tags": this.tags,
       "videoUrl": this.videoUrl,
@@ -101,6 +109,8 @@ export class SaveVideoDetailsComponent {
       "viewCount": 0,
 
     }
+    console.log("user id is");
+    console.log(this.userService.getUserId());
     this.videoService.saveVideo(videoMetaData).subscribe(data => {
       console.log(data);
       this.matSnackBar.open("Video Metadata Updated successfully", "OK");

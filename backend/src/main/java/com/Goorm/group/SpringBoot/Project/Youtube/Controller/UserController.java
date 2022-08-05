@@ -43,6 +43,13 @@ public class UserController {
         return true;
     }
 
+    @GetMapping("/{userId}/history")
+    @ResponseStatus(HttpStatus.OK)
+    public Set<String> userHistory(@PathVariable String userId) {
+        return userService.userHistory(userId);
+    }
+
+
     @GetMapping("/history")
     @ResponseStatus(HttpStatus.OK)
     public List<VideoDto> getHistory() {
@@ -51,15 +58,15 @@ public class UserController {
 
     @GetMapping("/likedVideo")
     @ResponseStatus(HttpStatus.OK)
-    public List<VideoDto> getLikedVideo(){
+    public List<VideoDto> getLikedVideo() {
         return videoService.getVideoList(userService.getLikedVideo());
 
     }
 
     @GetMapping("/dislikedVideo")
     @ResponseStatus(HttpStatus.OK)
-    public List<VideoDto> getDisLikedVideo(){
+    public List<VideoDto> getDisLikedVideo() {
         return videoService.getdisLikeVideoList(userService.getdisLikedVideo());
-    }
 
+    }
 }
